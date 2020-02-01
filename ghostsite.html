@@ -1,0 +1,189 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Flexbox на практике</title>
+		<meta charset="utf-8">
+		<style>
+			body{
+				background: #fefefe;
+				margin: 0;
+				padding: 0;
+				font:1em/1.3em Arial, Tahoma, "Trebuchet MS", sans-serif;
+				color: #272727;
+			}
+      .content{
+        width: 960px;
+        margin: 0px auto;
+
+        height: 960px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+			img{
+				margin: 0;
+				padding: 0;
+				vertical-align: middle;
+				border: none;
+			}
+			.main{
+				margin: 20px;
+				border: 1px solid #ccc;
+				padding: 10px;
+				background: #fff;
+				border-radius: 3px;
+			}
+			.bl{
+				padding: 5px 10px;
+				border:1px solid #ddd;
+				background: #fffde1;
+				border-radius: 3px;
+				margin: auto; /*если поставить auto, то блоки выровняются по центру по вертикале и по горизонтале*/
+				height: 20px;
+        width: 20px;
+        text-align: center;
+        font-size: 20px;
+			}
+			.main{
+				display:flex;
+				/*columns:   не будет уже работать*/
+				/*float:   не будет уже работать*/
+				/*clear   не будет уже работать*/
+			 /*vertical-align:    не будет уже работать*/
+			/* height: 500px; т.к. у bl нету конкретной высоты - они вытягиваются по всему main(т.к. это поперечная ось)*/
+			/* flex-direction: row;  значение по умолчанию главной оси слева-направо прижимание к лево, поперечная сверху-вниз*/
+			 flex-direction: column; /*значение по умолчанию главной оси сверху-вниз прижимание к верху, поперечная слева-направо*/
+			 /*flex-direction: column-reverse; значение по умолчанию главной оси СНИЗУ-ВВЕРХ прижимание к низу, поперечная слева-направо*/
+			 /*flex-direction: row-reverse; значение по умолчанию главной оси СПРАВО-НАЛЕВО прижимание к ПРАВО, поперечная сверху-вниз*/
+
+			 justify-content: flex-start;/ /*значение прижимания, сейчас по умолчанию, прижаты к началу в зависимости от flex-direction*/
+			 /*justify-content: flex-end; значение прижимания, прижаты к концу главной оси в зависимости от flex-direction*/
+			 /*justify-content: space-between; распределение блоков равномерно, от начала главной оси и до конца*/
+			 /*justify-content: space-around; распределение блоков равномерно с учетом отступов*/
+			 /*justify-content: center; равномерное распределение блоков по центру главной оси*/
+
+			 align-items: stretch;/*свойство растягивания по поперечной оси*/
+			 /*align-items: center; блоки становятся по центру, не растягиваются*/
+			 /*align-items: flex-end; блоки прижимаются к концу главной оси*/
+			 /*align-items: flex-start; блоки прижимаются к началу главной оси*/
+			 /*align-items: baseline; выравнивание относительно базовой линии, т.е. начало низа шрифта*/
+			}
+
+
+		</style>
+	</head>
+
+	<body>
+  
+<div class="content" id="content">
+
+
+</div>
+	<!--	<div class="main">
+			<div class="bl fl1">1</div>
+			<div class="bl fl2">2</div>
+			<div class="bl fl3">3</div>
+			<div class="bl fl4">4</div>
+			<div class="bl fl5">5</div>
+			<div class="bl fl6">6</div>
+		</div>-->
+
+  <script>
+
+
+ var array_news = [ { name_news: "Grapefruit", picture: "img/etud_black.jpg", style_news: 1, sold: 8200 },
+                    { name_news: "Orange", picture: "img/etud_black.jpg", style_news: 1, sold: 12101 },
+                    { name_news: "Cola", picture: "img/etud_black.jpg", style_news: 1, sold: 25412 },
+                    { name_news: "Diet Cola", picture: "img/etud_black.jpg", style_news: 1, sold: 43922 },
+                    { name_news: "Lemon", picture: "img/etud_black.jpg", style_news: 1, sold: 14983 },
+                    { name_news: "Raspberry", picture: "img/etud_black.jpg", style_news: 1, sold: 9427 },
+                    { name_news: "Root Beer", picture: "img/etud_black.jpg", style_news: 1, sold: 9909 },
+                    { name_news: "Water", picture: "img/etud_black.jpg", style_news: 1, sold: 62123 }
+                  ];
+
+//document.body.onload = addElement; при загрузке body
+ var my_div = newDiv = null;
+
+
+ function addElement() {
+   // создаем новый элемент div c классом main и меняем CSS
+   var newDiv = document.createElement("div");
+       newDiv.className = 'main'//класс main
+       newDiv.id = 'main_id';// id main
+       newDiv.style.backgroundColor = 'red';//css свойства
+       newDiv.style.width = "200px";//css свойства
+       newDiv.style.height = "250px";//css свойства
+   // добавляем только что созданый элемент в дерево DOM
+   let my_div = document.getElementById("content");//получаем id контента, чтобы вставить ВНУТРЬ него
+   my_div.appendChild(newDiv);//вставляем внутрь контента новый элемент
+   //document.body.insertBefore(newDiv, my_div); вставить до тега контент
+ }
+ addElement();//вызываем создание Main
+
+ function addElement2() {
+ // создаем новый элемент div c классом bl и меняем CSS
+   var newDiv = document.createElement("div");
+       newDiv.className = 'bl'//класс bl
+       newDiv.innerHTML = array_news[0].name_news;//вставляем внутрь текст, беря его из массива
+       newDiv.style.backgroundColor = 'white';
+       newDiv.style.width = "100px";//css свойства
+       newDiv.style.height = "20px";//css свойства
+       newDiv.onclick = delete_obj;//обработчик события на клике
+   // добавляем только что созданый элемент в дерево DOM
+   let my_div = document.getElementById("main_id");//получаем id main, чтобы вставить ВНУТРЬ него
+   my_div.appendChild(newDiv);//вставляем внутрь main новый элемент
+ }
+
+ addElement2();//вызываем создание bl
+
+ function addElement3() {
+ // создаем новый элемент img c классом img и меняем CSS
+   var newDiv = document.createElement("img");
+       newDiv.className = 'img';//класс img
+       newDiv.src = "img/etud_black.jpg";//путь к картинке
+       newDiv.style.width = "200px";//css свойства
+       newDiv.style.height = "200px";//css свойства
+   // добавляем только что созданый элемент в дерево DOM
+   let my_div = document.getElementById("main_id");//получаем id main, чтобы вставить ВНУТРЬ него
+   my_div.appendChild(newDiv);//вставляем внутрь main новый элемент
+ }
+ addElement3();//вызываем создание img
+
+
+
+function test() {//копирование полного объекта
+
+   document.querySelector(".content").appendChild(document.querySelector(".main").cloneNode(true));
+
+};
+test();
+test();
+test();
+
+function delete_obj() {//функция удаления элементов
+
+ let div1 = document.getElementById("main_id");
+ div1.remove()
+
+ //node.remove()
+};
+delete_obj()
+delete_obj()
+test();test();
+
+//let obj = "fsfsf";
+//
+//console.log(JSON.stringify(obj));
+
+
+
+
+   </script>
+
+
+
+</body>
+
+
+</html>
