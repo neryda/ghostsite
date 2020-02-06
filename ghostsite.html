@@ -12,6 +12,13 @@
     <title>Title</title>
 
 		<style>
+		.content{/*содание flex-технологии для content*/
+				display:flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: flex-start;
+			  flex-wrap: wrap;
+		}
 			.main{
 				display:flex;
 				/*columns:   не будет уже работать*/
@@ -19,28 +26,30 @@
 				/*clear   не будет уже работать*/
 			 /*vertical-align:    не будет уже работать*/
 			/* height: 500px; т.к. у bl нету конкретной высоты - они вытягиваются по всему main(т.к. это поперечная ось)*/
-			/* flex-direction: row;  значение по умолчанию главной оси слева-направо прижимание к лево, поперечная сверху-вниз*/
-			 flex-direction: column; /*значение по умолчанию главной оси сверху-вниз прижимание к верху, поперечная слева-направо*/
+			flex-direction: row;/*  значение по умолчанию главной оси слева-направо прижимание к лево, поперечная сверху-вниз*/
+			 /*flex-direction: column; /*значение по умолчанию главной оси сверху-вниз прижимание к верху, поперечная слева-направо*/
 			 /*flex-direction: column-reverse; значение по умолчанию главной оси СНИЗУ-ВВЕРХ прижимание к низу, поперечная слева-направо*/
 			 /*flex-direction: row-reverse; значение по умолчанию главной оси СПРАВО-НАЛЕВО прижимание к ПРАВО, поперечная сверху-вниз*/
 
-			 justify-content: flex-start;/ /*значение прижимания, сейчас по умолчанию, прижаты к началу в зависимости от flex-direction*/
+			/* justify-content: flex-start; /*значение прижимания, сейчас по умолчанию, прижаты к началу в зависимости от flex-direction*/
 			 /*justify-content: flex-end; значение прижимания, прижаты к концу главной оси в зависимости от flex-direction*/
 			 /*justify-content: space-between; распределение блоков равномерно, от начала главной оси и до конца*/
 			 /*justify-content: space-around; распределение блоков равномерно с учетом отступов*/
-			 /*justify-content: center; равномерное распределение блоков по центру главной оси*/
+			 justify-content: center; /*равномерное распределение блоков по центру главной оси*/
 
-			 align-items: stretch;/*свойство растягивания по поперечной оси*/
+			/*align-items: stretch;свойство растягивания по поперечной оси*/
 			 /*align-items: center; блоки становятся по центру, не растягиваются*/
 			 /*align-items: flex-end; блоки прижимаются к концу главной оси*/
-			 /*align-items: flex-start; блоки прижимаются к началу главной оси*/
+			 align-items: flex-start;/* блоки прижимаются к началу главной оси*/
 			 /*align-items: baseline; выравнивание относительно базовой линии, т.е. начало низа шрифта*/
+
 			}
 
 		</style>
 	</head>
 
 <body>
+
 <!--Создание верхнего меню-->
   <div class="header">
 		<div class="wrapper">
@@ -60,7 +69,9 @@
 <!--Создание основного контента-->
 	<div class="wrapper">
 		<div class="content" id="content">
-
+			<div class="close_form" id="close_form">
+			  <svg width="30" height="30" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z" fill="#000"/></svg>
+			</div>
   	</div>
 	</div>
 <!--Конец основного контента-->
@@ -84,75 +95,110 @@
  var my_div = newDiv = null;
 
 
- function addElement() {
-   // создаем новый элемент div c классом main и меняем CSS
-   var newDiv = document.createElement("div");
-       newDiv.className = 'main'//класс main
-       newDiv.id = 'main_id';// id main
-       newDiv.style.backgroundColor = 'red';//css свойства
-       newDiv.style.width = "200px";//css свойства
-       newDiv.style.height = "250px";//css свойства
-   // добавляем только что созданый элемент в дерево DOM
-   let my_div = document.getElementById("content");//получаем id контента, чтобы вставить ВНУТРЬ него
-   my_div.appendChild(newDiv);//вставляем внутрь контента новый элемент
-   //document.body.insertBefore(newDiv, my_div); вставить до тега контент
- }
- addElement();//вызываем создание Main
-
- function addElement2() {
- // создаем новый элемент div c классом bl и меняем CSS
-   var newDiv = document.createElement("div");
-       newDiv.className = 'bl'//класс bl
-       newDiv.innerHTML = array_news[0].name_news;//вставляем внутрь текст, беря его из массива
-       newDiv.style.backgroundColor = 'white';
-       newDiv.style.width = "100px";//css свойства
-       newDiv.style.height = "20px";//css свойства
-       newDiv.onclick = delete_obj;//обработчик события на клике
-   // добавляем только что созданый элемент в дерево DOM
-   let my_div = document.getElementById("main_id");//получаем id main, чтобы вставить ВНУТРЬ него
-   my_div.appendChild(newDiv);//вставляем внутрь main новый элемент
- }
-
- addElement2();//вызываем создание bl
-
- function addElement3() {
- // создаем новый элемент img c классом img и меняем CSS
-   var newDiv = document.createElement("img");
-       newDiv.className = 'img';//класс img
-       newDiv.src = "img/etud_black.jpg";//путь к картинке
-       newDiv.style.width = "200px";//css свойства
-       newDiv.style.height = "200px";//css свойства
-   // добавляем только что созданый элемент в дерево DOM
-   let my_div = document.getElementById("main_id");//получаем id main, чтобы вставить ВНУТРЬ него
-   my_div.appendChild(newDiv);//вставляем внутрь main новый элемент
- }
- addElement3();//вызываем создание img
-
-
+/*
 
 function test() {//копирование полного объекта
 
    document.querySelector(".content").appendChild(document.querySelector(".main").cloneNode(true));
 
 };
-test();
-test();
-test();
+*/
 
-function delete_obj() {//функция удаления элементов
+//объект который умеет строить элементы с новостями и взаимодействовать.
+var mainView = {
+	//первый метод объекта
+	createElementMain: function(){
 
- let div1 = document.getElementById("main_id");
- div1.remove()
+		for (var i = 0; i < array_news.length; i++) {//перебираю массив объектов новостей и создаю каждую новость в виде div блока
 
- //node.remove()
-};
-delete_obj()
-delete_obj()
-test();test();
+		// создаем новый элемент div c классом main и меняем CSS
+    var newDiv_main = document.createElement("div");
+        newDiv_main.className = 'main'//класс main
+        newDiv_main.id = 'main_id'+i;// id main
+        newDiv_main.style.backgroundColor = 'tomato';//css свойства
+        newDiv_main.style.width = "200px";//css свойства
+        newDiv_main.style.height = "250px";//css свойства
+    // добавляем только что созданый элемент в дерево DOM
+    let my_div_content = document.getElementById("content");//получаем id content, чтобы вставить ВНУТРЬ него main
+    my_div_content.appendChild(newDiv_main);//вставляем внутрь content новый элемент main
+    //document.body.insertBefore(newDiv, my_div); вставить до тега контент
 
-//let obj = "fsfsf";
-//
-//console.log(JSON.stringify(obj));
+		var newDiv_bl = document.createElement("div");
+				newDiv_bl.className = 'bl'//класс bl
+				newDiv_bl.id = 'bl'+i;// id main
+				newDiv_bl.innerHTML = array_news[i].name_news;//вставляем внутрь текст, беря его из массива
+				newDiv_bl.style.backgroundColor = 'white';
+				newDiv_bl.style.width = "100px";//css свойства
+				newDiv_bl.style.height = "20px";//css свойства
+
+		  //newDiv.onclick = delete_obj;//обработчик события на клике
+		// добавляем только что созданый элемент в дерево DOM
+		let my_div_main = document.getElementById("main_id"+i);//получаем id main, чтобы вставить ВНУТРЬ него
+		my_div_main.appendChild(newDiv_bl);//вставляем внутрь main новый элемент
+		let my_bl_main = document.getElementById(newDiv_bl.id);//получаем id main, чтобы вставить ВНУТРЬ него
+
+    my_bl_main.onclick = mainView.log2;/*каждому элементу заголовка bl назначаем в свойстве onckick обработчик события метод Объекта*/
+
+
+		// создаем новый элемент img c классом img и его CSS
+		var newDiv_img = document.createElement("img");
+				newDiv_img.className = 'img';//класс img
+				newDiv_img.src = array_news[i].picture;//путь к картинке, беря его из массива
+				newDiv_img.style.width = "200px";//css свойства
+				newDiv_img.style.height = "200px";//css свойства
+				my_div_main.appendChild(newDiv_img);//вставляем внутрь main новый элемент
+
+			};//конец цикла
+  	},//конец первого метода
+
+	//ВТОРОЙ метод объекта
+	log2: function(){
+
+		for (var i = 0; i < array_news.length; i++) {
+			let my_div_main = document.getElementById("main_id"+i);//получаем id main чтобы удалить потом
+			my_div_main.remove();//удаляем main блоки
+			//node.remove() //тоже самое только для node
+		};//конец цикла
+
+		let my_content = document.getElementById("content");//получаем id content, чтобы изменить свойства
+		    my_content.style.justifyContent = "flex-start";//обязательно писать свойство justifyContent через заглавную букву
+
+		var newDiv_news = document.createElement("div");
+				newDiv_news.className = 'news'//класс main
+				newDiv_news.id = 'news_id';// id main
+				//newDiv_news.style.backgroundColor = "#93FF75";//css свойства
+				//newDiv_news.style.width = "20px";//css свойства
+				//newDiv_news.style.height = "700px";//css свойства
+				newDiv_news.onclick = setTimeout(toggleResize,50);//таймер на красивый запуск окна
+
+		// добавляем только что созданый элемент в дерево DOM
+		let my_div_content = document.getElementById("content");//получаем id content, чтобы вставить ВНУТРЬ него newDiv_news
+		my_div_content.appendChild(newDiv_news);//вставляем внутрь content новый элемент main
+		//document.body.insertBefore(newDiv, my_div); вставить до тега контент
+
+
+
+		function toggleResize() {//функция добавляет новый класс к элементу, который применяет
+			let my_news_id = document.getElementById("content");
+			let my_close_form_id = document.getElementById("close_form");
+
+			if ((/\bresized\b/).test(my_news_id.className)) {
+
+				my_news_id.className = my_news_id.className.replace(/\bresized\b/, '');
+        my_news_id.className = my_news_id.className.replace(" ", '');
+			} else {
+				my_close_form_id.style.visibility = "visible";
+				my_news_id.style.justifyContent= "flex-end";
+				my_news_id.className += ' resized';
+
+			}
+		}
+
+	}//конец второго метода
+};//конец объекта
+
+mainView.createElementMain();
+
 
 </script>
 

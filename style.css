@@ -58,21 +58,14 @@ body{
   display: none;/*не показываем элемент*/
 }
 
- .nav li a{
+.nav li a{
    text-decoration: none;/*убираем подчеркивание ссылок а*/
    color: #494949;/*цвет ссылки*/
  }
 /*Конец Стили для верхнего меню*/
 
 /*Стили для основного контента*/
-.content{
-  width: 960px;
-  margin: 0px auto;
-  height: 960px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
+
 
 img{
 	margin: 0;
@@ -82,11 +75,13 @@ img{
 }
 
 .main{
-	margin: 20px;
+  max-width: 1000px; /*максимальная ширина*/
+  margin: 20px auto;
 	border: 1px solid #ccc;
 	padding: 10px;
 	background: #fff;
-	border-radius: 3px;
+	border-radius: 10px;
+  flex-wrap: wrap;
 }
 
 .bl{
@@ -101,3 +96,43 @@ img{
   font-size: 20px;
 }
 /*Конец Стили для основного контента*/
+
+
+.news {
+
+  background-color: white;
+  display: inline-block;
+
+  transition: width 1s ease-in-out;
+  -o-transition: width 1s ease-in-out;
+  -moz-transition: width 1s ease-in-out;
+  -webkit-transition: width 1s ease-in-out;
+
+}
+
+.content{
+  width: 960px;
+  height: 700px;
+  margin: 0px auto;
+
+
+
+}
+.content > .news {
+  width: 0%;
+  height: 0%;
+}
+
+.content.resized > .news {
+  width: 100%;
+  height: 100%;
+  background-color: #93FF75;
+  margin-bottom: 50px;
+}
+
+.close_form{
+  visibility: hidden;
+  cursor: pointer;
+  display: flex;
+  
+}
