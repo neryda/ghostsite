@@ -1,0 +1,103 @@
+/*Стили для всего body*/
+body{
+	background: #fefefe;
+	margin: 0;
+	padding: 0;
+	font:1em/1.3em Arial, Tahoma, "Trebuchet MS", sans-serif;
+	color: #272727;
+}
+/*Конец Стили для всего body*/
+
+/*Стили для верхнего меню*/
+ .wrapper{ /*внутренние отступы, чтобы контент не прижимался к бокам экрана*/
+  padding-left: 15px;
+  padding-right: 15px;
+  max-width: 1170px;/*максимальная ширина сайта*/
+  margin: 0 auto;/*выравнивание по центру*/
+ }
+
+ .navigation{/*div блок, чтобы регулировать меню в Flexbox*/
+  display: flex;/*применяется Flexbox*/
+  align-items: center;/*блоки становятся по центру, не растягиваются*/
+  justify-content: space-between;/* распределение блоков равномерно, от начала главной оси и до конца*/
+  padding-top: 36px;/*внутренний отступ сверху*/
+  padding-bottom: 40px;/*внутренний отступ снизу*/
+ }
+
+ .nav{/*ul блок*/
+  display:flex;/*выстраиваем элемент, чтобы внутри работал технология flex-box*/
+  list-style-type: none; /*убираем стандартный стиль ul элемента(проподают точки)*/
+  padding-left: 0;/*убираем внутренний стандартный отступ*/
+  font-weight: 700;/*задаём размер шрифта*/
+  text-transform: uppercase;/*все буквы становятся заглавными*/
+  margin-bottom: 0;/*удаляем отступы снизу*/
+ }
+
+ .nav li{/*li блок*/
+   padding-left: 23px;/*внутренний отступ*/
+   margin-left: 22px;/*внешний оступ*/
+   position: relative;/*Относительное позиционирование сдвигает элемент относительно его обычного положения.*/
+ }
+
+ .nav li:first-child{/*находит любой элемент, являющийся первым в своём родителе и сбрасываем отступы*/
+   padding-left: 0;/*внутренний отступ*/
+   margin-left: 0;/*внешний оступ*/
+ }
+
+.nav li::before{/*создаёт псевдоэлемент(вертикаль), который является первым потомком выбранного элемента*/
+  content: "";/*используется для добавления косметического содержимого в элемент с помощью свойства content*/
+  width: 2px;/*ширина*/
+  height: 100%;/*высота*/
+  background-color: #494949;/*цвет фона*/
+  display: block;/*Элемент показывается как блочный.*/
+  position:absolute;/*расположен относительно его ближайшего относительно позиционированного предка*/
+  left: 0;/*сдвигаем относительно предка*/
+}
+
+.nav li:first-child::before{/*находит любой элемент(вертикаль), являющийся первым в своём родителе.*/
+  display: none;/*не показываем элемент*/
+}
+
+ .nav li a{
+   text-decoration: none;/*убираем подчеркивание ссылок а*/
+   color: #494949;/*цвет ссылки*/
+ }
+/*Конец Стили для верхнего меню*/
+
+/*Стили для основного контента*/
+.content{
+  width: 960px;
+  margin: 0px auto;
+  height: 960px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+img{
+	margin: 0;
+	padding: 0;
+	vertical-align: middle;
+	border: none;
+}
+
+.main{
+	margin: 20px;
+	border: 1px solid #ccc;
+	padding: 10px;
+	background: #fff;
+	border-radius: 3px;
+}
+
+.bl{
+	padding: 5px 10px;
+	border:1px solid #ddd;
+	background: #fffde1;
+	border-radius: 3px;
+	margin: auto; /*если поставить auto, то блоки выровняются по центру по вертикале и по горизонтале*/
+	height: 20px;
+  width: 20px;
+  text-align: center;
+  font-size: 20px;
+}
+/*Конец Стили для основного контента*/

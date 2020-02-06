@@ -3,48 +3,15 @@
 <html>
 	<head>
 		<title>Flexbox на практике</title>
-		<meta charset="utf-8">
-		<style>
-			body{
-				background: #fefefe;
-				margin: 0;
-				padding: 0;
-				font:1em/1.3em Arial, Tahoma, "Trebuchet MS", sans-serif;
-				color: #272727;
-			}
-      .content{
-        width: 960px;
-        margin: 0px auto;
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="stylesheet" href="style.css"><!--Указание на использование таблицы стилей-->
+		<link rel="stylesheet" href="normalize.css"><!--Указание на использование таблицы стилей-->
 
-        height: 960px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-      }
-			img{
-				margin: 0;
-				padding: 0;
-				vertical-align: middle;
-				border: none;
-			}
-			.main{
-				margin: 20px;
-				border: 1px solid #ccc;
-				padding: 10px;
-				background: #fff;
-				border-radius: 3px;
-			}
-			.bl{
-				padding: 5px 10px;
-				border:1px solid #ddd;
-				background: #fffde1;
-				border-radius: 3px;
-				margin: auto; /*если поставить auto, то блоки выровняются по центру по вертикале и по горизонтале*/
-				height: 20px;
-        width: 20px;
-        text-align: center;
-        font-size: 20px;
-			}
+    <title>Title</title>
+
+		<style>
 			.main{
 				display:flex;
 				/*columns:   не будет уже работать*/
@@ -70,25 +37,36 @@
 			 /*align-items: baseline; выравнивание относительно базовой линии, т.е. начало низа шрифта*/
 			}
 
-
 		</style>
 	</head>
 
-	<body>
-  
-<div class="content" id="content">
+<body>
+<!--Создание верхнего меню-->
+  <div class="header">
+		<div class="wrapper">
+			<div class="navigation">
+			  <img src="img/img.png" alt="">
+		  	<ul class="nav">
+		  		<li><a href="">Главная</a></li>
+					<li><a href="">Новости</a></li>
+					<li><a href="">Новости2</a></li>
+					<li><a href="">Компания</a></li>
+		  	</ul>
+			</div>
+		</div>
+  </div>
+<!--Конец верхнего меню-->
+
+<!--Создание основного контента-->
+	<div class="wrapper">
+		<div class="content" id="content">
+
+  	</div>
+	</div>
+<!--Конец основного контента-->
 
 
-</div>
-	<!--	<div class="main">
-			<div class="bl fl1">1</div>
-			<div class="bl fl2">2</div>
-			<div class="bl fl3">3</div>
-			<div class="bl fl4">4</div>
-			<div class="bl fl5">5</div>
-			<div class="bl fl6">6</div>
-		</div>-->
-
+<!--JavaScript-->
   <script>
 
 
@@ -176,14 +154,9 @@ test();test();
 //
 //console.log(JSON.stringify(obj));
 
-
-
-
-   </script>
-
+</script>
 
 
 </body>
-
 
 </html>
