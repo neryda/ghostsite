@@ -12,9 +12,9 @@ body{
  .wrapper{ /*внутренние отступы, чтобы контент не прижимался к бокам экрана*/
   padding-left: 15px;
   padding-right: 15px;
-	padding-bottom: 30px;
+
   max-width: 1170px;/*максимальная ширина сайта*/
-  margin: 0 auto;/*выравнивание по центру*/
+  margin: 0px auto 1px auto;/*выравнивание по центру*/
 	border: 1px solid black;/*окантовка*/
  }
 
@@ -22,8 +22,8 @@ body{
   display: flex;/*применяется Flexbox*/
   align-items: center;/*блоки становятся по центру, не растягиваются*/
   justify-content: space-between;/* распределение блоков равномерно, от начала главной оси и до конца*/
-  padding-top: 36px;/*внутренний отступ сверху*/
-  padding-bottom: 40px;/*внутренний отступ снизу*/
+  padding-top: 5px;/*внутренний отступ сверху*/
+  /*padding-bottom: 30px;/*внутренний отступ снизу*/
  }
 
  .nav{/*ul блок*/
@@ -80,10 +80,11 @@ img{
   width: 960px;
   height: auto;
   margin: 0px auto;
+	padding-bottom: 20px;
 }
 .main{
-  max-width: 1000px; /*максимальная ширина*/
-  margin: 50px 40px auto;
+  /*max-width: 1000px; /*максимальная ширина*/
+  margin: 20px 20px auto;
 	border: 1px solid #ccc;
 	padding: 10px;
 	background: #fff;
@@ -97,8 +98,8 @@ img{
 	background: #fffde1;
 	border-radius: 3px;
 	margin: auto; /*если поставить auto, то блоки выровняются по центру по вертикале и по горизонтале*/
-	height: 20px;
-  width: 20px;
+	height: auto;
+  width: auto;
   text-align: center;
   font-size: 20px;
 }
@@ -109,11 +110,11 @@ img{
 /*Стили для блока NEWS*/
 .news {
 	width: 960px;/*ширина общая для блока*/
-  height: 700px;/*высота блока*/
-  margin: 50px auto;/*отступ сверху и автоматически по другим частям*/
+  height: auto;/*высота блока*/
+  margin: 30px auto;/*отступ сверху и автоматически по другим частям*/
 	border: 1px solid black;/*окантовка*/
-	padding: 10px;/*внутренний отступ*/
-	background: #93FF75;/*цвет*/
+	padding: 10px 10px 20px 10px;/*внутренний отступ*/
+	background: #FFF0ED;/*цвет*/
 	border-radius: 10px;/*закругление элемента*/
   flex-wrap: wrap;/*/*переносить на новый ряд*/
 }
@@ -121,15 +122,16 @@ img{
 .newDiv_news_block_top{/*верхний блок с кнопкой*/
 	width: auto;
 	height: auto;
-	background: #93FF75;
+	background: #FFF0ED;
 	margin: 10px 40px 0px 40px;
 }
 
 .newDiv_news_block_bottom{/*нижний блок с кнопкой*/
 	width: auto;
-	height: 500px;
+	height: auto;
 	background: white;
 	margin: 10px 40px auto;
+	padding: 10px 10px 20px 10px;/*внутренний отступ*/
 }
 
 .newDiv_news_block_top_сlose{/*кнопка с Х*/
@@ -139,6 +141,7 @@ img{
 	font-size: 20px;
 	text-align: center;
 	vertical-align: middle;
-	border: 1px solid black;/*окантовка*/
+	border: 2px solid black;/*окантовка*/
+	border-radius: 5px;/*закругление элемента*/
 }
 /*Конец Стили для блока news*/

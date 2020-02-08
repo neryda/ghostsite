@@ -55,6 +55,7 @@
 		<div class="wrapper">
 			<div class="navigation">
 			  <img src="img/img.png" alt="">
+				<img src="img/img1.png" alt="">
 		  	<ul class="nav">
 		  		<li><a href="">Главная</a></li>
 					<li><a href="">Новости</a></li>
@@ -79,14 +80,14 @@
   <script>
 
 
- var array_news = [ { name_news: "Grapefruit", picture: "img/etud_black.jpg", style_news: 1, img:["img/news_green.jpg","img/news_red.jpg"], sold: 8200 },
-                    { name_news: "Orange", picture: "img/etud_black.jpg", style_news: 1, sold: 12101 },
-                    { name_news: "Cola", picture: "img/etud_black.jpg", style_news: 1, sold: 25412 },
-                    { name_news: "Diet Cola", picture: "img/etud_black.jpg", style_news: 1, sold: 43922 },
-                    { name_news: "Lemon", picture: "img/etud_black.jpg", style_news: 1, sold: 14983 },
-                    { name_news: "Raspberry", picture: "img/etud_black.jpg", style_news: 1, sold: 9427 },
-                    { name_news: "Root Beer", picture: "img/etud_black.jpg", style_news: 1, sold: 9909 },
-                    { name_news: "Water", picture: "img/etud_black.jpg", style_news: 1, sold: 62123 }
+ var array_news = [ { name_news: "Холодное ли небо?", picture: "img/fly.jpg", style_news: 1, img:["img/fly1.png","img/fly2.png"], title_main:["Температура над Землей"], text_main:['Нижний слой атмосферы называется тропосферой , что означает сфера поворота. Все перемены погоды и климата являются результатом физических процессов, происходящих именно в этом слое. Верхняя граница этого слоя располагается там, где уменьшение температуры с высотой сменяется ее возрастанием,— примерно на высоте 15—16 км над экватором и 7—8 км над полюсами. Как и сама Земля, атмосфера под влиянием вращения нашей планеты тоже несколько сплющена над полюсами и разбухает над экватором. Однако этот эффект выражен в атмосфере значительно сильнее, чем в твердой оболочке Земли. В направлении от поверхности Земли к верхней границе тропосферы температура воздуха понижается. Над экватором минимальная температура воздуха составляет около —62°С, а над полюсами около —45°С. В умеренных широтах более 75% массы атмосферы находится в тропосфере. В тропиках же в пределах тропосферы находится около 90% массы атмосферы.'], sold: 8200 },
+                    { name_news: "Зелёные луга России", picture: "img/grass.jpg", style_news: 1, img:["img/nature1.png","img/nature2.png"], title_main:["Природа России"], text_main:["Растительный и животный мир России Природа России многообразна и имеет свои характерные особенности в разных уголках страны. Территория России состоит из разных природных зон: арктические пустыни, тундра, тайга, смешанные и широколиственные леса, степи, полупустыни и пустыни."], sold: 8200 },
+                    { name_news: "Котики из мемов", picture: "img/cat.jpg", style_news: 1, img:["img/cat1.png","img/cat2.png","img/cat3.png"], title_main:["Все любят котиков"], text_main:["По Сети распространился забавный мем с белым котом, сидящим за столом в ресторане. Выражение на мордочке придирчивого героя фотографии не смогло оставить пользователей равнодушными, и белый кот быстро прославился на весь интернет. А недавно выяснилось, что пушистого гурмана зовут Клякса и у него немало других забавных снимков. Более того, у Кляксы есть свой Instagram-аккаунт — и теперь за его жизнью следят больше 300 тысяч подписчиков."], sold: 8200 },
+                    { name_news: 'История линкора "Cевастополь"', picture: "img/ship.jpg", style_news: 2, img:["img/boat1.png","img/boat2.png","img/boat3.png"], title_main:["Корабли 2 мировой"], text_main:["Гордость японского императорского флота линкор «Ямато» имел длину 247 метров, весил 47.500 тонн, имел на борту три башни с 9 орудиями 460 миллиметровыми главного калибра. Корабль был спущен на воду в 1939 году, но был готов выйти в море в боевой поход только в 1942 году. За все время войны линкор принял участие только в трех настоящих сражениях, из которых только в одном смог вести огонь по кораблям противника из орудий главного калибра. Ямато был потоплен 7 апреля 1945 года авиацией противника, после попадание 13 торпед и 13 бомб. На сегодняшний день, суда класса «Ямато» считаются самыми большими линкорами в мире."], sold: 8200 },
+                    { name_news: "Польза цветов", picture: "img/flowers.jpg", style_news: 1, sold: 14983 },
+                    { name_news: "О планете 'Земля'", picture: "img/earth.jpg", style_news: 1, sold: 9427 },
+                    { name_news: "Пиво! пиво!", picture: "img/beer.jpg", style_news: 1, sold: 9909 },
+                    { name_news: "Бананы Эквадора", picture: "img/banana.jpg", style_news: 1, sold: 62123 }
                   ];
 
 //document.body.onload = addElement; при загрузке body
@@ -111,11 +112,11 @@ var mainView = {
 
 		// создаем новый элемент div c классом main и меняем CSS
     var newDiv_main = document.createElement("div");
-        newDiv_main.className = 'main'//класс main
+        newDiv_main.className = 'main';//класс main
         newDiv_main.id = 'main_id'+i;// id main
-        newDiv_main.style.backgroundColor = 'tomato';//css свойства
-        newDiv_main.style.width = "200px";//css свойства
-        newDiv_main.style.height = "250px";//css свойства
+        newDiv_main.style.backgroundColor = '#F3E0FF';//css свойства
+        newDiv_main.style.width = "250px";//css свойства
+        newDiv_main.style.height = "300px";//css свойства
     // добавляем только что созданый элемент в дерево DOM
     let my_div_content = document.getElementById("content");//получаем id content, чтобы вставить ВНУТРЬ него main
 		my_div_content.style.justifyContent = 'center';//обязательно писать свойство justifyContent через заглавную букву
@@ -123,20 +124,19 @@ var mainView = {
     //document.body.insertBefore(newDiv, my_div); вставить до тега контент
 
 		var newDiv_bl = document.createElement("div");
-				newDiv_bl.className = 'bl'//класс bl
+				newDiv_bl.className = 'bl';//класс bl
 				newDiv_bl.id = 'bl'+i;// id main
 				newDiv_bl.innerHTML = array_news[i].name_news;//вставляем внутрь текст, беря его из массива
 				newDiv_bl.style.backgroundColor = 'white';
-				newDiv_bl.style.width = "100px";//css свойства
-				newDiv_bl.style.height = "20px";//css свойства
+				newDiv_bl.style.width = "auto";//css свойства
+				newDiv_bl.style.height = "auto";//css свойства
 
 		  //newDiv.onclick = delete_obj;//обработчик события на клике
 		// добавляем только что созданый элемент в дерево DOM
 		let my_div_main = document.getElementById("main_id"+i);//получаем id main, чтобы вставить ВНУТРЬ него
 		my_div_main.appendChild(newDiv_bl);//вставляем внутрь main новый элемент
 		let my_bl_main = document.getElementById(newDiv_bl.id);//получаем id main, чтобы вставить ВНУТРЬ него
-
-    my_bl_main.onclick = mainView.createElementNews;/*каждому элементу заголовка bl назначаем в свойстве onckick обработчик события метод Объекта*/
+    my_bl_main.onclick = eventTarget;/*каждому элементу заголовка bl назначаем в свойстве onckick обработчик события метод Объекта*/
 
 
 		// создаем новый элемент img c классом img и его CSS
@@ -148,11 +148,26 @@ var mainView = {
 				my_div_main.appendChild(newDiv_img);//вставляем внутрь main новый элемент
 
 			};//конец цикла
-  	},//конец первого метода
+//функция проверяет какой объект генерирует события клика
+//и с помощью неё можно понять, что мы будет обращаться по определенному индексу в массиве
+//number_in_array - индекс который мы передадим во второй метод
+		function eventTarget(eventobj){
+			var button_click = eventobj.target; //переменная хранит объект события
+			var name = button_click.innerHTML;//вычисляем текст кнопки заголовка
+
+			for (var i = 0; i < array_news.length; i++) {//сравниваем текст с текстом массива
+        if (array_news[i].name_news == name) {
+					number_in_array = i;//индекс приравниваем в переменную для передачи
+				};
+			};
+			mainView.createElementNews(number_in_array);//вызываем второй метод
+		}
+
+},//конец первого метода
 
 	//ВТОРОЙ метод объекта
 	//Создаёт поле с новостью
-	createElementNews: function(){
+	createElementNews: function(number_in_array){
 
 		for (var i = 0; i < array_news.length; i++) {
 			let my_div_main = document.getElementById("main_id"+i);//получаем id main чтобы удалить потом
@@ -164,7 +179,7 @@ var mainView = {
 		    my_content.style.justifyContent = 'flex-start';//обязательно писать свойство justifyContent через заглавную букву
 
 		var newDiv_news = document.createElement("div");//создали общий элемент News в который вложим два элемента крестик и саму новость
-				newDiv_news.className = 'news'//класс main
+				newDiv_news.className = 'news';//класс main
 				newDiv_news.id = 'news_id';// id main
 				newDiv_news.style.display = 'flex';//технология flex
 				newDiv_news.style.flexDirection = 'column';//главная ось СВЕРХУ ВНИЗ, чтобы блоки верхний и нижний получились
@@ -177,18 +192,19 @@ var mainView = {
 
 		//создаём 2 блока(верхний и нижний) для вложения новости и кнопки закрытия
 		var newDiv_news_block_top = document.createElement("div");//переменная нового элемента верхнего блока
-				newDiv_news_block_top.className = 'newDiv_news_block_top'//klass
+				newDiv_news_block_top.className = 'newDiv_news_block_top';//klass
 				newDiv_news_block_top.id = 'newDiv_news_block_top_id';// id
 		var newDiv_news_block_bottom = document.createElement("div");// переменная нового элемента нижнего блока
-				newDiv_news_block_bottom.className = 'newDiv_news_block_bottom'// klass
+				newDiv_news_block_bottom.className = 'newDiv_news_block_bottom';// klass
 				newDiv_news_block_bottom.id = 'newDiv_news_block_bottom_id';// id
+				newDiv_news_block_bottom.style.textAlign = "center"; // сделали элементы по центру если они строчные
 		let my_div_content_news_id = document.getElementById("news_id");//получаем id блока c классом news, чтобы вставить ВНУТРЬ него
 				my_div_content_news_id.appendChild(newDiv_news_block_top);//вставляем внутрь news - div верхнего блока
 				my_div_content_news_id.appendChild(newDiv_news_block_bottom);//вставляем внутрь news - div нижнего блока
 
 		//создаём  кнопку закрытия
 		var newDiv_news_block_top_сlose = document.createElement("div");// переменная для создания кнопки
-				newDiv_news_block_top_сlose.className = 'newDiv_news_block_top_сlose'//класс main кнопки закрытия новости
+				newDiv_news_block_top_сlose.className = 'newDiv_news_block_top_сlose';//класс main кнопки закрытия новости
 				newDiv_news_block_top_сlose.id = 'newDiv_news_block_top_сlose_id';// id кнопки закрытия новости
 				newDiv_news_block_top_сlose.innerHTML = 'X';// содержимое текст Х
 				newDiv_news_block_top_сlose.onclick = function(){
@@ -197,17 +213,86 @@ var mainView = {
 				mainView.createElementMain();//возвращаемся на главную, создаем заново main
 				};
 					// событие по клику крестика
-				let my_div_content_close_id = document.getElementById("newDiv_news_block_top_id");//получаем id верхнего блока чтобы вставить кнопку
+		let my_div_content_close_id = document.getElementById("newDiv_news_block_top_id");//получаем id верхнего блока чтобы вставить кнопку
 				my_div_content_close_id.appendChild(newDiv_news_block_top_сlose);//вставляем внутрь верхнего блока кнопку закрытия новости
 
+mainView.createRepletionNews(number_in_array);
+
 	},//конец второго метода
+
 	//начало третьего метода
 	//наполняем то, что сделал второй метод
-	createRepletionNews: function(){
-		let news_block_bottom_id=document.getElementById("newDiv_news_block_bottom_id");
+	createRepletionNews: function(number_in_array){
+//вычисляем id блока для вложения в него div-ов
+		let block_bottom_id = document.getElementById("newDiv_news_block_bottom_id");
+
+		function createNameTitle(i){//функция делает первый див с заголовком
+
+			var title_main = document.createElement("div");//переменная нового элемента нижнего блока
+				title_main.className = 'title_main';//klass
+				title_main.id = 'title_main_id';// id
+				title_main.style.width = "auto";//css свойства
+				title_main.style.height = "auto";//css свойства
+			  title_main.innerHTML = array_news[i].title_main[0];// содержимое текст из массива
+        title_main.style.textAlign = "center";//делаем по центру текст
+				title_main.style.fontWeight = "600";//толщина
+				title_main.style.fontSize = "28px";//размер
+				title_main.style.margin = "20px auto";//отступы
+				block_bottom_id.appendChild(title_main);//вставляем див заголовок
+		};
+
+		function createTextMain(i){//делаем див для текста
+
+			var text_main = document.createElement("div");//переменная нового элемента нижнего блока
+				text_main.className = 'text_main';//klass
+				text_main.id = 'text_main_id';// id
+				text_main.style.width = "auto";//css свойства
+				text_main.style.height = "auto";//css свойства
+			  text_main.innerHTML = array_news[i].text_main[0];// содержимое текст Х
+        text_main.style.textAlign = "center";//делаем по центру текст
+				text_main.style.fontWeight = "600";//толщина
+				text_main.style.margin = "50px auto";//размер
+				block_bottom_id.appendChild(text_main);//вставляем див текст
+		};
+
+		function createImg(i,j){
+			var img_main = document.createElement("img");//переменная нового элемента нижнего блока
+				img_main.className = 'img_main';//klass
+				img_main.id = 'img_main_id';// id
+				img_main.style.width = "auto";//css свойства
+				img_main.style.height = "auto";//css свойства
+			  img_main.src = array_news[i].img[j];// содержимое текст Х
+
+        img_main.style.display = "inline-block";//элементы строчные, а у родителя ставим центровку по центру
+
+				img_main.style.margin = "20px 50px";
+				block_bottom_id.appendChild(img_main);
+		};
+
+		console.log(number_in_array);
+
+		if (array_news[number_in_array].style_news == 1) {
+
+			createNameTitle(number_in_array);
+			createTextMain(number_in_array);
+			for (var j = 0; j < array_news[number_in_array].img.length; j++) {
+    	createImg(number_in_array,j);
+		  };
+
+	} else if (array_news[number_in_array].style_news == 2) {
+
+			createNameTitle(number_in_array);
+			for (var j = 0; j < array_news[number_in_array].img.length; j++) {
+			createImg(number_in_array,j);
+		  };
+			createTextMain(number_in_array);
+
+		};
+
+//console.log(number_in_array);
+		}//конец третьего метода
 
 
-	}//конец третьего метода
 };//конец объекта
 
 mainView.createElementMain();
