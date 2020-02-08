@@ -2,7 +2,7 @@
 
 <html>
 	<head>
-		<title>Flexbox на практике</title>
+		<title>Построение через JS</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -69,9 +69,7 @@
 <!--Создание основного контента-->
 	<div class="wrapper">
 		<div class="content" id="content">
-			<div class="close_form" id="close_form">
-			  <svg width="30" height="30" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z" fill="#000"/></svg>
-			</div>
+
   	</div>
 	</div>
 <!--Конец основного контента-->
@@ -81,7 +79,7 @@
   <script>
 
 
- var array_news = [ { name_news: "Grapefruit", picture: "img/etud_black.jpg", style_news: 1, sold: 8200 },
+ var array_news = [ { name_news: "Grapefruit", picture: "img/etud_black.jpg", style_news: 1, img:["img/news_green.jpg","img/news_red.jpg"], sold: 8200 },
                     { name_news: "Orange", picture: "img/etud_black.jpg", style_news: 1, sold: 12101 },
                     { name_news: "Cola", picture: "img/etud_black.jpg", style_news: 1, sold: 25412 },
                     { name_news: "Diet Cola", picture: "img/etud_black.jpg", style_news: 1, sold: 43922 },
@@ -120,6 +118,7 @@ var mainView = {
         newDiv_main.style.height = "250px";//css свойства
     // добавляем только что созданый элемент в дерево DOM
     let my_div_content = document.getElementById("content");//получаем id content, чтобы вставить ВНУТРЬ него main
+		my_div_content.style.justifyContent = 'center';//обязательно писать свойство justifyContent через заглавную букву
     my_div_content.appendChild(newDiv_main);//вставляем внутрь content новый элемент main
     //document.body.insertBefore(newDiv, my_div); вставить до тега контент
 
@@ -137,7 +136,7 @@ var mainView = {
 		my_div_main.appendChild(newDiv_bl);//вставляем внутрь main новый элемент
 		let my_bl_main = document.getElementById(newDiv_bl.id);//получаем id main, чтобы вставить ВНУТРЬ него
 
-    my_bl_main.onclick = mainView.log2;/*каждому элементу заголовка bl назначаем в свойстве onckick обработчик события метод Объекта*/
+    my_bl_main.onclick = mainView.createElementNews;/*каждому элементу заголовка bl назначаем в свойстве onckick обработчик события метод Объекта*/
 
 
 		// создаем новый элемент img c классом img и его CSS
@@ -152,7 +151,8 @@ var mainView = {
   	},//конец первого метода
 
 	//ВТОРОЙ метод объекта
-	log2: function(){
+	//Создаёт поле с новостью
+	createElementNews: function(){
 
 		for (var i = 0; i < array_news.length; i++) {
 			let my_div_main = document.getElementById("main_id"+i);//получаем id main чтобы удалить потом
@@ -161,40 +161,53 @@ var mainView = {
 		};//конец цикла
 
 		let my_content = document.getElementById("content");//получаем id content, чтобы изменить свойства
-		    my_content.style.justifyContent = "flex-start";//обязательно писать свойство justifyContent через заглавную букву
+		    my_content.style.justifyContent = 'flex-start';//обязательно писать свойство justifyContent через заглавную букву
 
-		var newDiv_news = document.createElement("div");
+		var newDiv_news = document.createElement("div");//создали общий элемент News в который вложим два элемента крестик и саму новость
 				newDiv_news.className = 'news'//класс main
 				newDiv_news.id = 'news_id';// id main
-				//newDiv_news.style.backgroundColor = "#93FF75";//css свойства
-				//newDiv_news.style.width = "20px";//css свойства
-				//newDiv_news.style.height = "700px";//css свойства
-				newDiv_news.onclick = setTimeout(toggleResize,50);//таймер на красивый запуск окна
+				newDiv_news.style.display = 'flex';//технология flex
+				newDiv_news.style.flexDirection = 'column';//главная ось СВЕРХУ ВНИЗ, чтобы блоки верхний и нижний получились
+
 
 		// добавляем только что созданый элемент в дерево DOM
 		let my_div_content = document.getElementById("content");//получаем id content, чтобы вставить ВНУТРЬ него newDiv_news
 		my_div_content.appendChild(newDiv_news);//вставляем внутрь content новый элемент main
 		//document.body.insertBefore(newDiv, my_div); вставить до тега контент
 
+		//создаём 2 блока(верхний и нижний) для вложения новости и кнопки закрытия
+		var newDiv_news_block_top = document.createElement("div");//переменная нового элемента верхнего блока
+				newDiv_news_block_top.className = 'newDiv_news_block_top'//klass
+				newDiv_news_block_top.id = 'newDiv_news_block_top_id';// id
+		var newDiv_news_block_bottom = document.createElement("div");// переменная нового элемента нижнего блока
+				newDiv_news_block_bottom.className = 'newDiv_news_block_bottom'// klass
+				newDiv_news_block_bottom.id = 'newDiv_news_block_bottom_id';// id
+		let my_div_content_news_id = document.getElementById("news_id");//получаем id блока c классом news, чтобы вставить ВНУТРЬ него
+				my_div_content_news_id.appendChild(newDiv_news_block_top);//вставляем внутрь news - div верхнего блока
+				my_div_content_news_id.appendChild(newDiv_news_block_bottom);//вставляем внутрь news - div нижнего блока
+
+		//создаём  кнопку закрытия
+		var newDiv_news_block_top_сlose = document.createElement("div");// переменная для создания кнопки
+				newDiv_news_block_top_сlose.className = 'newDiv_news_block_top_сlose'//класс main кнопки закрытия новости
+				newDiv_news_block_top_сlose.id = 'newDiv_news_block_top_сlose_id';// id кнопки закрытия новости
+				newDiv_news_block_top_сlose.innerHTML = 'X';// содержимое текст Х
+				newDiv_news_block_top_сlose.onclick = function(){
+
+				my_div_content_news_id.remove();//удаляем блок news
+				mainView.createElementMain();//возвращаемся на главную, создаем заново main
+				};
+					// событие по клику крестика
+				let my_div_content_close_id = document.getElementById("newDiv_news_block_top_id");//получаем id верхнего блока чтобы вставить кнопку
+				my_div_content_close_id.appendChild(newDiv_news_block_top_сlose);//вставляем внутрь верхнего блока кнопку закрытия новости
+
+	},//конец второго метода
+	//начало третьего метода
+	//наполняем то, что сделал второй метод
+	createRepletionNews: function(){
+		let news_block_bottom_id=document.getElementById("newDiv_news_block_bottom_id");
 
 
-		function toggleResize() {//функция добавляет новый класс к элементу, который применяет
-			let my_news_id = document.getElementById("content");
-			let my_close_form_id = document.getElementById("close_form");
-
-			if ((/\bresized\b/).test(my_news_id.className)) {
-
-				my_news_id.className = my_news_id.className.replace(/\bresized\b/, '');
-        my_news_id.className = my_news_id.className.replace(" ", '');
-			} else {
-				my_close_form_id.style.visibility = "visible";
-				my_news_id.style.justifyContent= "flex-end";
-				my_news_id.className += ' resized';
-
-			}
-		}
-
-	}//конец второго метода
+	}//конец третьего метода
 };//конец объекта
 
 mainView.createElementMain();
