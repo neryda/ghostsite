@@ -1,0 +1,8 @@
+{"name":"John","age":30,"isAdmin":false,"courses":["html","css","js"],"wife":null}    json объекта js
+{name: "John", age: 30, isAdmin: false, courses: Array(3), wife: null}
+object
+
+
+"{\"name\":\"John\",\"age\":30,\"isAdmin\":false,\"courses\":[\"html\",\"css\",\"js\"],\"wife\":null}\r\n"  json объекта php
+{"name":"John","age":30,"isAdmin":false,"courses":["html","css","js"],"wife":null}
+string

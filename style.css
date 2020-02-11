@@ -14,8 +14,9 @@ body{
   padding-right: 15px;
 
   max-width: 1170px;/*максимальная ширина сайта*/
-  margin: 0px auto 1px auto;/*выравнивание по центру*/
-	border: 1px solid black;/*окантовка*/
+  margin: 0px auto 0px auto;/*выравнивание по центру*/
+
+
  }
 
  .navigation{/*div блок, чтобы регулировать меню в Flexbox*/
@@ -23,6 +24,10 @@ body{
   align-items: center;/*блоки становятся по центру, не растягиваются*/
   justify-content: space-between;/* распределение блоков равномерно, от начала главной оси и до конца*/
   padding-top: 5px;/*внутренний отступ сверху*/
+  border-top: 1px solid black;/*окантовка*/
+	border-left: 1px solid black;/*окантовка*/
+	border-right: 1px solid black;/*окантовка*/
+	background: url(img/navigation.png);
   /*padding-bottom: 30px;/*внутренний отступ снизу*/
  }
 
@@ -32,7 +37,8 @@ body{
   padding-left: 0;/*убираем внутренний стандартный отступ*/
   font-weight: 700;/*задаём размер шрифта*/
   text-transform: uppercase;/*все буквы становятся заглавными*/
-  margin-bottom: 0;/*удаляем отступы снизу*/
+  margin-bottom: 86px;/*удаляем отступы снизу*/
+	margin-right: 15px;/*удаляем отступы снизу*/
  }
 
  .nav li{/*li блок*/
@@ -64,6 +70,10 @@ body{
    text-decoration: none;/*убираем подчеркивание ссылок а*/
    color: #494949;/*цвет ссылки*/
  }
+.nav li a:hover{ /*псевдокласс для замены цветы при наведении*/
+
+	color: #FFB200;
+}
 /*Конец Стили для верхнего меню*/
 
 /*Стили для основного контента*/
@@ -76,27 +86,40 @@ img{
 	border: none;
 }
 
+.wrapper_small{
+	display: flex;/*применяется Flexbox*/
+  align-items: center;/*блоки становятся по центру, не растягиваются*/
+  justify-content: space-between;/* распределение блоков равномерно, от начала главной оси и до конца*/
+  padding-top: 5px;/*внутренний отступ сверху*/
+  border: 1px solid black;
+	background: url(img/wrappersmall.jpg);
+	/*background-attachment: fixed;  фиксация заднего фона*/
+}
+
 .content{
   width: 960px;
   height: auto;
   margin: 0px auto;
 	padding-bottom: 20px;
+	/*  border: 1px solid black;окантовка*/
 }
 .main{
   /*max-width: 1000px; /*максимальная ширина*/
-  margin: 20px 20px auto;
+  margin: 15px 30px auto;
 	border: 1px solid #ccc;
 	padding: 10px;
 	background: #fff;
 	border-radius: 10px;
   flex-wrap: wrap;
+
+/*	rgba(131,50,58,1);*/
 }
 
 .bl{
 	padding: 5px 10px;
 	border:1px solid #ddd;
-	background: #fffde1;
-	border-radius: 3px;
+	background: rgba(131,50,58,0.7);
+	border-radius: 5px;
 	margin: auto; /*если поставить auto, то блоки выровняются по центру по вертикале и по горизонтале*/
 	height: auto;
   width: auto;
@@ -114,7 +137,7 @@ img{
   margin: 30px auto;/*отступ сверху и автоматически по другим частям*/
 	border: 1px solid black;/*окантовка*/
 	padding: 10px 10px 20px 10px;/*внутренний отступ*/
-	background: #FFF0ED;/*цвет*/
+	background: rgba(243,224,255,0.3);/*цвет*/
 	border-radius: 10px;/*закругление элемента*/
   flex-wrap: wrap;/*/*переносить на новый ряд*/
 }
@@ -122,7 +145,7 @@ img{
 .newDiv_news_block_top{/*верхний блок с кнопкой*/
 	width: auto;
 	height: auto;
-	background: #FFF0ED;
+
 	margin: 10px 40px 0px 40px;
 }
 
@@ -139,6 +162,8 @@ img{
 	height: 20px;
 	float:right;
 	font-size: 20px;
+	color: white;
+	background-color: black;
 	text-align: center;
 	vertical-align: middle;
 	border: 2px solid black;/*окантовка*/

@@ -8,6 +8,8 @@
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<link rel="stylesheet" href="style.css"><!--Указание на использование таблицы стилей-->
 		<link rel="stylesheet" href="normalize.css"><!--Указание на использование таблицы стилей-->
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
 
     <title>Title</title>
 
@@ -69,44 +71,103 @@
 
 <!--Создание основного контента-->
 	<div class="wrapper">
-		<div class="content" id="content">
+		<div class="wrapper_small">
+			<div class="content" id="content">
 
+			</div>
   	</div>
 	</div>
 <!--Конец основного контента-->
 
+<!--PHP Начало загрузки данных с файла-->
+
+<!-- PHP Конец загрузки данных с файла-->
 
 <!--JavaScript-->
   <script>
 
 
- var array_news = [ { name_news: "Холодное ли небо?", picture: "img/fly.jpg", style_news: 1, img:["img/fly1.png","img/fly2.png"], title_main:["Температура над Землей"], text_main:['Нижний слой атмосферы называется тропосферой , что означает сфера поворота. Все перемены погоды и климата являются результатом физических процессов, происходящих именно в этом слое. Верхняя граница этого слоя располагается там, где уменьшение температуры с высотой сменяется ее возрастанием,— примерно на высоте 15—16 км над экватором и 7—8 км над полюсами. Как и сама Земля, атмосфера под влиянием вращения нашей планеты тоже несколько сплющена над полюсами и разбухает над экватором. Однако этот эффект выражен в атмосфере значительно сильнее, чем в твердой оболочке Земли. В направлении от поверхности Земли к верхней границе тропосферы температура воздуха понижается. Над экватором минимальная температура воздуха составляет около —62°С, а над полюсами около —45°С. В умеренных широтах более 75% массы атмосферы находится в тропосфере. В тропиках же в пределах тропосферы находится около 90% массы атмосферы.'], sold: 8200 },
-                    { name_news: "Зелёные луга России", picture: "img/grass.jpg", style_news: 1, img:["img/nature1.png","img/nature2.png"], title_main:["Природа России"], text_main:["Растительный и животный мир России Природа России многообразна и имеет свои характерные особенности в разных уголках страны. Территория России состоит из разных природных зон: арктические пустыни, тундра, тайга, смешанные и широколиственные леса, степи, полупустыни и пустыни."], sold: 8200 },
-                    { name_news: "Котики из мемов", picture: "img/cat.jpg", style_news: 1, img:["img/cat1.png","img/cat2.png","img/cat3.png"], title_main:["Все любят котиков"], text_main:["По Сети распространился забавный мем с белым котом, сидящим за столом в ресторане. Выражение на мордочке придирчивого героя фотографии не смогло оставить пользователей равнодушными, и белый кот быстро прославился на весь интернет. А недавно выяснилось, что пушистого гурмана зовут Клякса и у него немало других забавных снимков. Более того, у Кляксы есть свой Instagram-аккаунт — и теперь за его жизнью следят больше 300 тысяч подписчиков."], sold: 8200 },
-                    { name_news: 'История линкора "Cевастополь"', picture: "img/ship.jpg", style_news: 2, img:["img/boat1.png","img/boat2.png","img/boat3.png"], title_main:["Корабли 2 мировой"], text_main:["Гордость японского императорского флота линкор «Ямато» имел длину 247 метров, весил 47.500 тонн, имел на борту три башни с 9 орудиями 460 миллиметровыми главного калибра. Корабль был спущен на воду в 1939 году, но был готов выйти в море в боевой поход только в 1942 году. За все время войны линкор принял участие только в трех настоящих сражениях, из которых только в одном смог вести огонь по кораблям противника из орудий главного калибра. Ямато был потоплен 7 апреля 1945 года авиацией противника, после попадание 13 торпед и 13 бомб. На сегодняшний день, суда класса «Ямато» считаются самыми большими линкорами в мире."], sold: 8200 },
-                    { name_news: "Польза цветов", picture: "img/flowers.jpg", style_news: 1, sold: 14983 },
-                    { name_news: "О планете 'Земля'", picture: "img/earth.jpg", style_news: 1, sold: 9427 },
-                    { name_news: "Пиво! пиво!", picture: "img/beer.jpg", style_news: 1, sold: 9909 },
-                    { name_news: "Бананы Эквадора", picture: "img/banana.jpg", style_news: 1, sold: 62123 }
-                  ];
+
+
+/*
+	$( document ).ready(function() {
+	    $("#btn").click(
+			function(){
+			//	sendAjaxForm('result_form', 'ajax_form', 'action_ajax_form.php');// убрал лишний аргумент
+	      sendAjaxForm('result_form', 'ajax_form');
+				return false;
+			}
+		);
+	});*/
+
+
+	// AJAX-запрос, который будет отправлен на сервер:
+	//   по адресу: action_ajax_form.php
+	//   методом POST
+	//   содержащий данные $data в виде name=John&phonenumber=Boston&text=1111
+	// success - это функция, которая будет вызвана после получения ответа от сервера
+	//   (сам ответ доступен посредством аргумента result)
+	    $.ajax({ // аякс запрос с помошью jquery
+
+	        url:     "action_ajax_form.php", //url страницы (action_ajax_form.php)
+	        type:     "POST", //метод отправки
+	        dataType: "html", //формат данных "html" — полученный html будет доступен в текстовом виде. Если он содержит скрипты в тегах
+	        // <script>, то они будут автоматически выполнены, только когда html-текст будет помещен в DOM.
+	        data: "name=John&phonenumber=Boston", // передаю данные на сервер в виде данные прилетят в PHP в глобальную переменную POST
+	        //data: $("#"+ajax_form).serialize(),  // Сеарилизуем объект можно и в таком виде(если надо собрать данные с формы)
+	        /*serialize() - предназначен для сериализации данных формы в строку запроса.
+	          имяПоля1=значение1&имяПоля2=значение2...т.е.на всех form с id ajax_form будут получены
+	          значения input, textarea и select. В моём случае из input берется:
+	          name=%D0%9F%D0%B0%D0%B2%D0%B5%D0%BB1 & phonenumber=%D0%9D%D0%B5%D0%B1%D0%BE%D0%B3%D0%B8%D0%BD2*/
+	          //console.log(this.data);// для проверки
+	        success: function(response) { //Данные отправлены успешно выполняется функция
+						var array_news = [{}]; // глобальная переменная с массивом объектов для загрузки в неё исходных данных
+	          // действия при получения ответа (response) от сервера
+	          // response содержит такой вид как СТРОКА json  {"name":"55","phonenumber":"66","phonenumber2":"66"}
+						// response содержит то, что отправит обратно PHP c action_ajax_form.php
+					  //	console.log(response);
+
+	        	result = $.parseJSON(response);// преобразуем текстовую строку в массив объектов.
+						//т.к. сервер отправил строку в JSON формате, то мы её восстанавливаем
+						//console.log(result);
+	          // result - содержит уже как МАССИВ ОБЪЕКТОВ
+				  	//console.log(result);
+					  //console.log(typeof result); result у нас становится объектом
+
+         		array_news = result;// т.к. в коде завязано все на array_news, наполняем переменную-массив объектами
+
+						//console.log(typeof  result.phonenumber2);
+						mainView.createElementMain(array_news);//вызываем первый метод объекта, который будет строить каркас сайта
+						// и передаем ему массив с объектами в аргументе
+	    	},
+	    	error: function(response) { // Данные не отправлены
+	            console.log("ДАННЫЕ НЕ ОТПРАВЛЕНЫ С СЕРВЕРА");
+	    	}
+	 	});
+
+
+
+
+
+//console.log(array_news);
+//массив образованный из файла
+
 
 //document.body.onload = addElement; при загрузке body
  var my_div = newDiv = null;
-
-
 /*
 
 function test() {//копирование полного объекта
 
    document.querySelector(".content").appendChild(document.querySelector(".main").cloneNode(true));
-
 };
 */
 
 //объект который умеет строить элементы с новостями и взаимодействовать.
 var mainView = {
+
 	//первый метод объекта
-	createElementMain: function(){
+	createElementMain: function(array_news){
 
 		for (var i = 0; i < array_news.length; i++) {//перебираю массив объектов новостей и создаю каждую новость в виде div блока
 
@@ -114,9 +175,9 @@ var mainView = {
     var newDiv_main = document.createElement("div");
         newDiv_main.className = 'main';//класс main
         newDiv_main.id = 'main_id'+i;// id main
-        newDiv_main.style.backgroundColor = '#F3E0FF';//css свойства
-        newDiv_main.style.width = "250px";//css свойства
-        newDiv_main.style.height = "300px";//css свойства
+        newDiv_main.style.backgroundColor = 'rgba(243,224,255,0.3)';//css свойства
+        newDiv_main.style.width = "225px";//css свойства
+        newDiv_main.style.height = "275px";//css свойства
     // добавляем только что созданый элемент в дерево DOM
     let my_div_content = document.getElementById("content");//получаем id content, чтобы вставить ВНУТРЬ него main
 		my_div_content.style.justifyContent = 'center';//обязательно писать свойство justifyContent через заглавную букву
@@ -127,7 +188,7 @@ var mainView = {
 				newDiv_bl.className = 'bl';//класс bl
 				newDiv_bl.id = 'bl'+i;// id main
 				newDiv_bl.innerHTML = array_news[i].name_news;//вставляем внутрь текст, беря его из массива
-				newDiv_bl.style.backgroundColor = 'white';
+				newDiv_bl.style.backgroundColor = 'rgba(255,250,242,0.8)';
 				newDiv_bl.style.width = "auto";//css свойства
 				newDiv_bl.style.height = "auto";//css свойства
 
@@ -160,14 +221,14 @@ var mainView = {
 					number_in_array = i;//индекс приравниваем в переменную для передачи
 				};
 			};
-			mainView.createElementNews(number_in_array);//вызываем второй метод
+			mainView.createElementNews(array_news, number_in_array);//вызываем второй метод
 		}
 
 },//конец первого метода
 
 	//ВТОРОЙ метод объекта
 	//Создаёт поле с новостью
-	createElementNews: function(number_in_array){
+	createElementNews: function(array_news, number_in_array){
 
 		for (var i = 0; i < array_news.length; i++) {
 			let my_div_main = document.getElementById("main_id"+i);//получаем id main чтобы удалить потом
@@ -210,19 +271,19 @@ var mainView = {
 				newDiv_news_block_top_сlose.onclick = function(){
 
 				my_div_content_news_id.remove();//удаляем блок news
-				mainView.createElementMain();//возвращаемся на главную, создаем заново main
+				mainView.createElementMain(array_news);//возвращаемся на главную, создаем заново main
 				};
 					// событие по клику крестика
 		let my_div_content_close_id = document.getElementById("newDiv_news_block_top_id");//получаем id верхнего блока чтобы вставить кнопку
 				my_div_content_close_id.appendChild(newDiv_news_block_top_сlose);//вставляем внутрь верхнего блока кнопку закрытия новости
 
-mainView.createRepletionNews(number_in_array);
+mainView.createRepletionNews(array_news, number_in_array);
 
 	},//конец второго метода
 
 	//начало третьего метода
 	//наполняем то, что сделал второй метод
-	createRepletionNews: function(number_in_array){
+	createRepletionNews: function(array_news, number_in_array){
 //вычисляем id блока для вложения в него div-ов
 		let block_bottom_id = document.getElementById("newDiv_news_block_bottom_id");
 
@@ -255,7 +316,7 @@ mainView.createRepletionNews(number_in_array);
 				block_bottom_id.appendChild(text_main);//вставляем див текст
 		};
 
-		function createImg(i,j){
+		function createImg(i,j){//делаем img для текста
 			var img_main = document.createElement("img");//переменная нового элемента нижнего блока
 				img_main.className = 'img_main';//klass
 				img_main.id = 'img_main_id';// id
@@ -269,8 +330,8 @@ mainView.createRepletionNews(number_in_array);
 				block_bottom_id.appendChild(img_main);
 		};
 
-		console.log(number_in_array);
-
+		console.log(number_in_array);// индекс элемента который сгененировал событие клик по названию новости
+		//тут стили в зависимости от стиля выводится новость
 		if (array_news[number_in_array].style_news == 1) {
 
 			createNameTitle(number_in_array);
@@ -286,16 +347,14 @@ mainView.createRepletionNews(number_in_array);
 			createImg(number_in_array,j);
 		  };
 			createTextMain(number_in_array);
-
 		};
 
-//console.log(number_in_array);
+
 		}//конец третьего метода
 
 
 };//конец объекта
 
-mainView.createElementMain();
 
 
 </script>
