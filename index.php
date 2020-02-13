@@ -83,6 +83,25 @@
 
 <!-- PHP Конец загрузки данных с файла-->
 
+
+<!--Создание НИЖНЕГО меню-->
+  <div class="header">
+		<div class="wrapper">
+			<div class="wrapper_footer_small">
+
+			   <img src="img/img.png" alt="">
+				 <ul class="nav_footer">
+					 <li><a href="">Главная</a></li>
+					 <li><a href="">Новости</a></li>
+					 <li><a href="">Новости2</a></li>
+					 <li><a href="">Компания</a></li>
+				 </ul>
+
+			</div>
+		</div>
+  </div>
+<!--Конец НИЖНЕГО меню-->
+
 <!--JavaScript-->
   <script>
 
@@ -208,7 +227,51 @@ var mainView = {
 				newDiv_img.style.height = "200px";//css свойства
 				my_div_main.appendChild(newDiv_img);//вставляем внутрь main новый элемент
 
+
+		var newDiv_block_all_star = document.createElement("div");
+
+				newDiv_block_all_star.className = 'block_all_star';//класс bl
+				newDiv_block_all_star.id = 'block_all_star'+i;// id main
+
+				newDiv_block_all_star.style.backgroundColor = 'white';
+				newDiv_block_all_star.style.width = "auto";//css свойства
+				newDiv_block_all_star.style.height = "auto";//css свойства
+				newDiv_block_all_star.innerHTML = 'Рейтинг: ';
+				newDiv_block_all_star.style.fontSize = '12px';
+				newDiv_block_all_star.style.fontWeight = 'bold';
+        my_div_main.appendChild(newDiv_block_all_star);
+
+
+
+				for (var j = 1; j < 6; j++) {
+					var my_block_all_star = document.getElementById(newDiv_block_all_star.id);
+					var newDiv_block_star = document.createElement("img");
+
+							newDiv_block_star.className = 'block_star';//класс bl
+							newDiv_block_star.id = 'block_star'+j;// id main
+							newDiv_block_star.src = 'img/star.png';
+							if (j <= array_news[i].sold) {
+
+								newDiv_block_star.style.backgroundColor = 'orange';
+
+							};
+
+
+							newDiv_block_star.style.width = "auto";//css свойства
+							newDiv_block_star.style.height = "auto";//css свойства
+
+							my_block_all_star.appendChild(newDiv_block_star);
+
+				};
+
+				//
+
 			};//конец цикла
+
+
+
+			//
+
 //функция проверяет какой объект генерирует события клика
 //и с помощью неё можно понять, что мы будет обращаться по определенному индексу в массиве
 //number_in_array - индекс который мы передадим во второй метод

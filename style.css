@@ -56,7 +56,7 @@ body{
   content: "";/*используется для добавления косметического содержимого в элемент с помощью свойства content*/
   width: 2px;/*ширина*/
   height: 100%;/*высота*/
-  background-color: #494949;/*цвет фона*/
+  background-color: #FFFFFF;/*цвет фона*/
   display: block;/*Элемент показывается как блочный.*/
   position:absolute;/*расположен относительно его ближайшего относительно позиционированного предка*/
   left: 0;/*сдвигаем относительно предка*/
@@ -68,7 +68,7 @@ body{
 
 .nav li a{
    text-decoration: none;/*убираем подчеркивание ссылок а*/
-   color: #494949;/*цвет ссылки*/
+   color: #FFFFFF;/*цвет ссылки*/
  }
 .nav li a:hover{ /*псевдокласс для замены цветы при наведении*/
 
@@ -93,6 +93,21 @@ img{
   padding-top: 5px;/*внутренний отступ сверху*/
   border: 1px solid black;
 	background: url(img/wrappersmall.jpg);
+	/*background-attachment: fixed;  фиксация заднего фона*/
+}
+
+.wrapper_footer_small{
+
+	display: flex;/*применяется Flexbox*/
+  align-items: center;/*блоки становятся по центру, не растягиваются*/
+  justify-content: space-between;/* распределение блоков равномерно, от начала главной оси и до конца*/
+  padding-top: 5px;/*внутренний отступ сверху*/
+
+	border-left: 1px solid black;/*окантовка*/
+	border-right: 1px solid black;/*окантовка*/
+  border-bottom: 1px solid black;/*окантовка*/
+
+	background: url(img/footer1.jpg);
 	/*background-attachment: fixed;  фиксация заднего фона*/
 }
 
@@ -125,6 +140,30 @@ img{
   width: auto;
   text-align: center;
   font-size: 20px;
+}
+
+.main .bl:hover{ /*псевдокласс для замены цвета при наведении*/
+	color: #FF6A00;
+	cursor:pointer
+}
+
+.block_all_star{
+	display: flex;/*применяется Flexbox*/
+	flex-direction: row;
+  border:1px solid #ddd;
+  text-align: center;
+	border-radius: 3px;
+}
+
+.block_star{ /*псевдокласс для замены цвета при наведении*/
+	background-color: black;
+	cursor:pointer;
+	transition: 0.3s;
+}
+.block_all_star .block_star:hover{ /*псевдокласс для замены цвета при наведении*/
+	background-color: orange;
+	cursor:pointer;
+	 transform: scale(1.2); /* Увеличиваем масштаб */
 }
 
 
@@ -170,3 +209,67 @@ img{
 	border-radius: 5px;/*закругление элемента*/
 }
 /*Конец Стили для блока news*/
+
+
+/*Начало Стили для ФУТЕРА*/
+.nav_footer{/*ul блок*/
+ display:flex;/*выстраиваем элемент, чтобы внутри работал технология flex-box*/
+ list-style-type: none; /*убираем стандартный стиль ul элемента(проподают точки)*/
+ padding-left: 0;/*убираем внутренний стандартный отступ*/
+ font-weight: 700;/*задаём размер шрифта*/
+ text-transform: uppercase;/*все буквы становятся заглавными*/
+ margin-bottom: 86px;/*удаляем отступы снизу*/
+ margin-right: 15px;/*удаляем отступы снизу*/
+}
+
+.nav_footer li{/*li блок*/
+	padding-left: 23px;/*внутренний отступ*/
+	margin-left: 22px;/*внешний оступ*/
+	position: relative;/*Относительное позиционирование сдвигает элемент относительно его обычного положения.*/
+}
+
+.nav_footer li:first-child{/*находит любой элемент, являющийся первым в своём родителе и сбрасываем отступы*/
+	padding-left: 0;/*внутренний отступ*/
+	margin-left: 0;/*внешний оступ*/
+}
+
+.nav_footer li::before{/*создаёт псевдоэлемент(вертикаль), который является первым потомком выбранного элемента*/
+ content: "";/*используется для добавления косметического содержимого в элемент с помощью свойства content*/
+ width: 2px;/*ширина*/
+ height: 100%;/*высота*/
+ background-color: #FFFFFF;/*цвет фона*/
+ display: block;/*Элемент показывается как блочный.*/
+ position:absolute;/*расположен относительно его ближайшего относительно позиционированного предка*/
+ left: 0;/*сдвигаем относительно предка*/
+}
+
+.nav_footer li:first-child::before{/*находит любой элемент(вертикаль), являющийся первым в своём родителе.*/
+ display: none;/*не показываем элемент*/
+}
+
+.nav_footer li a{
+	text-decoration: none;/*убираем подчеркивание ссылок а*/
+	color: #FFFFFF;/*цвет ссылки*/
+}
+.nav_footer li a:hover{ /*псевдокласс для замены цветы при наведении*/
+
+ color: #FFB200;
+}
+.nav_footer li a{
+   text-decoration: none;/*убираем подчеркивание ссылок а*/
+   color: #FFFFFF;/*цвет ссылки*/
+ }
+.nav_footer li a:hover{ /*псевдокласс для замены цветы при наведении*/
+
+	color: #FFB200;
+}
+.nav_footer li::before{/*создаёт псевдоэлемент(вертикаль), который является первым потомком выбранного элемента*/
+  content: "";/*используется для добавления косметического содержимого в элемент с помощью свойства content*/
+  width: 2px;/*ширина*/
+  height: 100%;/*высота*/
+  background-color: #FFFFFF;/*цвет фона*/
+  display: block;/*Элемент показывается как блочный.*/
+  position:absolute;/*расположен относительно его ближайшего относительно позиционированного предка*/
+  left: 0;/*сдвигаем относительно предка*/
+}
+/*Конец Стили для ФУТЕРА*/
