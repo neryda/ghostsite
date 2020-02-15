@@ -15,8 +15,6 @@ body{
 
   max-width: 1170px;/*максимальная ширина сайта*/
   margin: 0px auto 0px auto;/*выравнивание по центру*/
-
-
  }
 
  .navigation{/*div блок, чтобы регулировать меню в Flexbox*/
@@ -116,7 +114,7 @@ img{
   height: auto;
   margin: 0px auto;
 	padding-bottom: 20px;
-	/*  border: 1px solid black;окантовка*/
+	/* border: 1px solid black;окантовка*/
 }
 .main{
   /*max-width: 1000px; /*максимальная ширина*/
@@ -127,7 +125,6 @@ img{
 	border-radius: 10px;
   flex-wrap: wrap;
 
-/*	rgba(131,50,58,1);*/
 }
 
 .bl{
@@ -155,15 +152,16 @@ img{
 	border-radius: 3px;
 }
 
-.block_star{ /*псевдокласс для замены цвета при наведении*/
-	background-color: black;
-	cursor:pointer;
-	transition: 0.3s;
+.block_star{ /*класс для img звезд*/
+	background-color: black;/*цвет фона*/
+	cursor:pointer;/*курсор смена*/
+	transition: 0.3s;/*задержка, эффект перехода между состояниями*/
+	border-radius: 5px;/*закругление элемента*/
 }
+
 .block_all_star .block_star:hover{ /*псевдокласс для замены цвета при наведении*/
-	background-color: orange;
-	cursor:pointer;
-	 transform: scale(1.2); /* Увеличиваем масштаб */
+	background-color: orange; /*цвет фона*/
+  transform: scale(1.2); /* Увеличиваем масштаб */
 }
 
 
@@ -184,7 +182,6 @@ img{
 .newDiv_news_block_top{/*верхний блок с кнопкой*/
 	width: auto;
 	height: auto;
-
 	margin: 10px 40px 0px 40px;
 }
 

@@ -105,9 +105,6 @@
 <!--JavaScript-->
   <script>
 
-
-
-
 /*
 	$( document ).ready(function() {
 	    $("#btn").click(
@@ -126,45 +123,71 @@
 	//   содержащий данные $data в виде name=John&phonenumber=Boston&text=1111
 	// success - это функция, которая будет вызвана после получения ответа от сервера
 	//   (сам ответ доступен посредством аргумента result)
-	    $.ajax({ // аякс запрос с помошью jquery
-
-	        url:     "action_ajax_form.php", //url страницы (action_ajax_form.php)
-	        type:     "POST", //метод отправки
-	        dataType: "html", //формат данных "html" — полученный html будет доступен в текстовом виде. Если он содержит скрипты в тегах
-	        // <script>, то они будут автоматически выполнены, только когда html-текст будет помещен в DOM.
-	        data: "name=John&phonenumber=Boston", // передаю данные на сервер в виде данные прилетят в PHP в глобальную переменную POST
-	        //data: $("#"+ajax_form).serialize(),  // Сеарилизуем объект можно и в таком виде(если надо собрать данные с формы)
-	        /*serialize() - предназначен для сериализации данных формы в строку запроса.
-	          имяПоля1=значение1&имяПоля2=значение2...т.е.на всех form с id ajax_form будут получены
-	          значения input, textarea и select. В моём случае из input берется:
-	          name=%D0%9F%D0%B0%D0%B2%D0%B5%D0%BB1 & phonenumber=%D0%9D%D0%B5%D0%B1%D0%BE%D0%B3%D0%B8%D0%BD2*/
-	          //console.log(this.data);// для проверки
-	        success: function(response) { //Данные отправлены успешно выполняется функция
-						var array_news = [{}]; // глобальная переменная с массивом объектов для загрузки в неё исходных данных
-	          // действия при получения ответа (response) от сервера
-	          // response содержит такой вид как СТРОКА json  {"name":"55","phonenumber":"66","phonenumber2":"66"}
-						// response содержит то, что отправит обратно PHP c action_ajax_form.php
-					  //	console.log(response);
-
-	        	result = $.parseJSON(response);// преобразуем текстовую строку в массив объектов.
-						//т.к. сервер отправил строку в JSON формате, то мы её восстанавливаем
-						//console.log(result);
-	          // result - содержит уже как МАССИВ ОБЪЕКТОВ
-				  	//console.log(result);
-					  //console.log(typeof result); result у нас становится объектом
-
-         		array_news = result;// т.к. в коде завязано все на array_news, наполняем переменную-массив объектами
-
-						//console.log(typeof  result.phonenumber2);
-						mainView.createElementMain(array_news);//вызываем первый метод объекта, который будет строить каркас сайта
-						// и передаем ему массив с объектами в аргументе
-	    	},
-	    	error: function(response) { // Данные не отправлены
-	            console.log("ДАННЫЕ НЕ ОТПРАВЛЕНЫ С СЕРВЕРА");
-	    	}
-	 	});
 
 
+	/*	*/
+
+	$.ajax({ // аякс запрос с помошью jquery
+
+			url:     "action_ajax_form.php", //url страницы (action_ajax_form.php)
+			type:     "POST", //метод отправки
+			dataType: "html", //формат данных "html" — полученный html будет доступен в текстовом виде. Если он содержит скрипты в тегах
+			// <script>, то они будут автоматически выполнены, только когда html-текст будет помещен в DOM.
+			data: "name=John", // передаю данные на сервер в виде данные прилетят в PHP в глобальную переменную POST
+			//data: $("#"+ajax_form).serialize(),  // Сеарилизуем объект можно и в таком виде(если надо собрать данные с формы)
+			/*serialize() - предназначен для сериализации данных формы в строку запроса.
+				имяПоля1=значение1&имяПоля2=значение2...т.е.на всех form с id ajax_form будут получены
+				значения input, textarea и select. В моём случае из input берется:
+				name=%D0%9F%D0%B0%D0%B2%D0%B5%D0%BB1 & phonenumber=%D0%9D%D0%B5%D0%B1%D0%BE%D0%B3%D0%B8%D0%BD2*/
+				//console.log(this.data);// для проверки
+			success: function(response) { //Данные отправлены успешно - выполняется функция
+				var array_news = [{}]; // глобальная переменная с массивом объектов для загрузки в неё исходных данных
+				// действия при получения ответа (response) от сервера
+				// response содержит такой вид как СТРОКА json  {"name":"55","phonenumber":"66","phonenumber2":"66"}
+				// response содержит то, что отправит обратно PHP c action_ajax_form.php
+				// console.log(response);
+
+				result = $.parseJSON(response);// преобразуем текстовую строку в массив объектов.
+				//т.к. сервер отправил строку в JSON формате, то мы её восстанавливаем
+				//console.log(response);
+				//result - содержит уже как МАССИВ ОБЪЕКТОВ
+			//	console.log(result);
+				//console.log(typeof result); result у нас становится объектом
+
+				array_news = result;// т.к. в коде завязано все на array_news, наполняем переменную-массив объектами
+				if (array_news.length != 0) {// если массив с основными данными не пустой, то делаем ещё запрос на рейтинг
+
+					$.ajax({ // второй запрос для подгрузки рейтинга - передаем на сервер слово phonenumber=Boston в POST
+								url:     "action_ajax_form.php", //url страницы (action_ajax_form.php)
+								type:     "POST", //метод отправки
+								dataType: "html", //формат данных "html" — полученный html будет доступен в текстовом виде.
+								data: "phonenumber=Boston", // передаю данные на сервер в виде данные прилетят в PHP в глобальную переменную POST
+								success: function(response) { //Данные отправлены успешно - выполняется функция
+									var array_sold = [{}]; // глобальная переменная с массивом объектов для загрузки в неё рейтинга
+									// console.log(response);
+									array_sold = $.parseJSON(response);// преобразуем текстовую строку в массив объектов.
+									console.log(array_sold);
+									mainView.createElementMain(array_news, array_sold);//вызываем первый метод объекта, который будет строить каркас сайта
+									//и передаем в него уже готовые данные с сервера
+							},
+
+							error: function(response) { // Данные не отправлены
+										console.log("ДАННЫЕ НЕ ОТПРАВЛЕНЫ С СЕРВЕРА");
+							}
+					});
+				}
+				//console.log(typeof  result.phonenumber2);
+
+				// и передаем ему массив с объектами в аргументе
+
+				//phonenumber=Boston
+				//name=John
+		},
+
+		error: function(response) { // Данные не отправлены
+					console.log("ДАННЫЕ НЕ ОТПРАВЛЕНЫ С СЕРВЕРА");
+		}
+});
 
 
 
@@ -186,9 +209,9 @@ function test() {//копирование полного объекта
 var mainView = {
 
 	//первый метод объекта
-	createElementMain: function(array_news){
+	createElementMain: function(array_news, array_sold){
 
-		for (var i = 0; i < array_news.length; i++) {//перебираю массив объектов новостей и создаю каждую новость в виде div блока
+		for (var i = 0; i < array_news.length; i++) {//ГЛАВНЫЙ ЦИКЛ перебираю массив объектов новостей и создаю каждую новость в виде div блока
 
 		// создаем новый элемент div c классом main и меняем CSS
     var newDiv_main = document.createElement("div");
@@ -227,50 +250,71 @@ var mainView = {
 				newDiv_img.style.height = "200px";//css свойства
 				my_div_main.appendChild(newDiv_img);//вставляем внутрь main новый элемент
 
+	// создаем новый элемент div c классом block_all_star для всех звезд
+		var newDiv_block_all_star = document.createElement("div");//переменная содержащая новый элемент div
 
-		var newDiv_block_all_star = document.createElement("div");
+				newDiv_block_all_star.className = 'block_all_star';//класс block_all_star
+				newDiv_block_all_star.id = 'block_all_star'+i;// id block_all_star и прибавляем к названию i
+				newDiv_block_all_star.style.backgroundColor = 'white';//цвет белый
+				newDiv_block_all_star.style.width = "auto";//css свойства ширины
+				newDiv_block_all_star.style.height = "auto";//css свойства высоты
+				newDiv_block_all_star.innerHTML = 'Рейтинг: '+ (rate(array_sold,i))+'&nbsp'+'&nbsp'; //рейтинг в названии и передача функции в виде переменной в конце два пробела
+				newDiv_block_all_star.style.fontSize = '12px'; // шрифт
+				newDiv_block_all_star.style.fontWeight = 'bold';//жирный шрифт
+        my_div_main.appendChild(newDiv_block_all_star);// добавляем блок в main блок
 
-				newDiv_block_all_star.className = 'block_all_star';//класс bl
-				newDiv_block_all_star.id = 'block_all_star'+i;// id main
-
-				newDiv_block_all_star.style.backgroundColor = 'white';
-				newDiv_block_all_star.style.width = "auto";//css свойства
-				newDiv_block_all_star.style.height = "auto";//css свойства
-				newDiv_block_all_star.innerHTML = 'Рейтинг: ';
-				newDiv_block_all_star.style.fontSize = '12px';
-				newDiv_block_all_star.style.fontWeight = 'bold';
-        my_div_main.appendChild(newDiv_block_all_star);
-
-
-
+				//цикл для добавления div звезд block_all_star
 				for (var j = 1; j < 6; j++) {
-					var my_block_all_star = document.getElementById(newDiv_block_all_star.id);
-					var newDiv_block_star = document.createElement("img");
+					var my_block_all_star = document.getElementById(newDiv_block_all_star.id);//берем по id block_all_star именно в этой итерации цикла
+					var newDiv_block_star = document.createElement("img");//переменная содержащая новый элемент img
 
-							newDiv_block_star.className = 'block_star';//класс bl
-							newDiv_block_star.id = 'block_star'+j;// id main
-							newDiv_block_star.src = 'img/star.png';
-							if (j <= array_news[i].sold) {
+							newDiv_block_star.className = 'block_star';//класс block_star
+							newDiv_block_star.id = 'block_star'+j;// id block_star + j
+							newDiv_block_star.src = 'img/star.png'; //картинка по адресу
 
-								newDiv_block_star.style.backgroundColor = 'orange';
-
+							if (j <= (rate(array_sold,i))) { //условие каждую звезду раскрасим в оранжевый если номер
+								//звезды меньше или равен рейтингу то красим
+								newDiv_block_star.style.backgroundColor = 'orange';// оранжевый фон по умолчанию в css он черный
 							};
-
 
 							newDiv_block_star.style.width = "auto";//css свойства
 							newDiv_block_star.style.height = "auto";//css свойства
 
-							my_block_all_star.appendChild(newDiv_block_star);
+							my_block_all_star.appendChild(newDiv_block_star);//вставляем в общий блок звезд
 
-				};
+				};//конец цикла добавления звезд
 
-				//
+			};//КОНЕЦ ГЛАВНОГО ЦИКЛА
 
-			};//конец цикла
+			//Функция выводит средний рейтинг и округляет его
+			function rate(array_sold,i) {
 
+			function getPopularity(item) { // помощник функция делает массив из массива объектов выбирая объект sold
+			    return item.sold;
+			}
+			// Извлекаем оценки популярности, получая массив чисел.
+			var popularityScores = array_sold.map(getPopularity);
+			//выходит такой массив, в каждом по 6 значений
+		  //console.log(popularityScores);//[Array(6), Array(6), Array(6), Array(6), Array(6), Array(6), Array(6), Array(6), Array(6), Array(6)]
+			var all_Scores = 0;
+			var sum_Mark = 0;
+			var mean_Scores = 0;
+			for (var j = 0; j < popularityScores[j].length; j++) {
 
+			//	console.log(i);
+			//	console.log(popularityScores[i][j]);
+			//	console.log(popularityScores[j].length);
 
-			//
+				all_Scores = all_Scores + ((popularityScores[i][j])*j);//сумма всех оценок по новости
+				sum_Mark = sum_Mark + (popularityScores[i][j]);//количество всех оценок по новости
+			};
+			mean_Scores = Math.floor(all_Scores/sum_Mark * 100) / 100 ;//седнеарифметическое оценка
+		  //	console.log(all_Scores);
+		  //	console.log(sum_Mark);
+			//console.log(mean_Scores);
+
+			return mean_Scores;//возвращаем седнеарифметическое оценка
+};
 
 //функция проверяет какой объект генерирует события клика
 //и с помощью неё можно понять, что мы будет обращаться по определенному индексу в массиве
@@ -284,14 +328,14 @@ var mainView = {
 					number_in_array = i;//индекс приравниваем в переменную для передачи
 				};
 			};
-			mainView.createElementNews(array_news, number_in_array);//вызываем второй метод
+			mainView.createElementNews(array_news, number_in_array, array_sold);//вызываем второй метод
 		}
 
 },//конец первого метода
 
 	//ВТОРОЙ метод объекта
 	//Создаёт поле с новостью
-	createElementNews: function(array_news, number_in_array){
+	createElementNews: function(array_news, number_in_array, array_sold){
 
 		for (var i = 0; i < array_news.length; i++) {
 			let my_div_main = document.getElementById("main_id"+i);//получаем id main чтобы удалить потом
@@ -334,19 +378,19 @@ var mainView = {
 				newDiv_news_block_top_сlose.onclick = function(){
 
 				my_div_content_news_id.remove();//удаляем блок news
-				mainView.createElementMain(array_news);//возвращаемся на главную, создаем заново main
+				mainView.createElementMain(array_news, array_sold);//возвращаемся на главную, создаем заново main
 				};
 					// событие по клику крестика
 		let my_div_content_close_id = document.getElementById("newDiv_news_block_top_id");//получаем id верхнего блока чтобы вставить кнопку
 				my_div_content_close_id.appendChild(newDiv_news_block_top_сlose);//вставляем внутрь верхнего блока кнопку закрытия новости
 
-mainView.createRepletionNews(array_news, number_in_array);
+mainView.createRepletionNews(array_news, number_in_array, array_sold);
 
 	},//конец второго метода
 
 	//начало третьего метода
 	//наполняем то, что сделал второй метод
-	createRepletionNews: function(array_news, number_in_array){
+	createRepletionNews: function(array_news, number_in_array, array_sold){
 //вычисляем id блока для вложения в него div-ов
 		let block_bottom_id = document.getElementById("newDiv_news_block_bottom_id");
 
